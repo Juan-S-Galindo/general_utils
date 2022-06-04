@@ -37,8 +37,6 @@ def extract_bucket_file_name_from_event(record: dict) -> Tuple[str, str]:
 
 
 class Aws(ABC):
-    """Abstract class to be use as database engine template."""
-
     def __init__(self, aws_boto3: Callable, *args, **kwargs) -> None:
 
         for key in kwargs:

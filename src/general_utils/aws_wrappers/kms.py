@@ -7,8 +7,6 @@ from general_utils.aws_wrappers.utils import Aws
 
 
 class AwsKms(Aws):
-    """Class to handle KMS encryption and decrytion"""
-
     def __init__(self, KeyId: str, **kwargs) -> None:
         """
         Args:

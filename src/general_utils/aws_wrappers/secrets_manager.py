@@ -6,8 +6,6 @@ from general_utils.aws_wrappers.utils import Aws
 
 
 class AwsSecretManager(Aws):
-    """Class to manage AWS Secret Manager Operations."""
-
     def __init__(self, secret_arn: str, **kwargs):
         """
         Args:
