@@ -1,3 +1,6 @@
 general_utils_venv/
+jupyter_notebooks/
 *__pycache__/
 *.DS_Store
+.pytest_cache/
+.vscode/
