@@ -2,7 +2,6 @@ from os import path, path, makedirs
 from shutil import rmtree
 from requests import post, get, put
 from typing import Union, List, Callable
-from json import load
 from math import ceil, floor
 from datetime import datetime
 from pathlib import Path
@@ -251,7 +250,7 @@ def round_number(number: float, round_up: bool = False, decimals: int = 2) -> fl
     elif decimals == 0:
         return ceil(number) if round_up else floor(number)
 
-    factor = 10 ** decimals
+    factor = 10**decimals
 
     return (
         ceil(number * factor) / factor if round_up else floor(number * factor) / factor
@@ -376,7 +375,7 @@ def send_post_request(url: str, max_attempts: int, timeout: int, **kargs) -> dic
     )
 
 
-def databus_docdb_mapper(dictionary: dict, mapping_dict: dict = None) -> dict:
+def nested_dict_to_flat(dictionary: dict, mapping_dict: dict = None) -> dict:
     """Function to flat nested dictionaries using a mapping dictionary.
 
     Args:
@@ -395,13 +394,13 @@ def databus_docdb_mapper(dictionary: dict, mapping_dict: dict = None) -> dict:
 
             if type(value) is dict:
 
-                yield from databus_docdb_mapper(value, mapping_dict=mapping_dict[key])
+                yield from nested_dict_to_flat(value, mapping_dict=mapping_dict[key])
 
             elif type(value) is list:
 
                 for dictionary in value:
 
-                    yield from databus_docdb_mapper(
+                    yield from nested_dict_to_flat(
                         dictionary, mapping_dict=mapping_dict[key]
                     )
             else:

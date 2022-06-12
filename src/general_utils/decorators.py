@@ -34,7 +34,7 @@ def api_multi_call_decorator(times_to_retry: int) -> HtmlResponseObject:
                 if attempt == times_to_retry:
 
                     raise Exception(
-                        f"API retry attempts exceeded. error: {response.text if 'text' in dir(response) else 'No info on this error'}"
+                        f"API retry attempts exceeded. Error: {response.text if 'text' in dir(response) else 'No info on this error'}"
                     )
 
                 response = payload_object(*args, **kwargs)
@@ -58,11 +58,11 @@ def function_retry_decorator(
     time_between_attempts: int,
     kill_execution: bool,
 ) -> Callable:
-    """Function to try to call a function a specified number of times.
+    """Function to try to call a function a specified number of times and absorb any errors encountered until max_attempts are reached.
 
     Args:
         max_attempts (int)
-        logger (NomiLogger)
+        logger (Logger)
         time_between_attempts (int)
         kill_execution (bool)
 
