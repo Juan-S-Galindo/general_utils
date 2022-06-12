@@ -4,3 +4,7 @@ jupyter_notebooks/
 *.DS_Store
 .pytest_cache/
 .vscode/
+*.egg-info
+dist/
+build/
+*__pycache__/
