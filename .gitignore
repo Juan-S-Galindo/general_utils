@@ -8,3 +8,4 @@ jupyter_notebooks/
 dist/
 build/
 *__pycache__/
+*.env
