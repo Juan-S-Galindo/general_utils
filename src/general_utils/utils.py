@@ -251,7 +251,7 @@ def round_number(number: float, round_up: bool = False, decimals: int = 2) -> fl
     elif decimals == 0:
         return ceil(number) if round_up else floor(number)
 
-    factor = 10**decimals
+    factor = 10 ** decimals
 
     return (
         ceil(number * factor) / factor if round_up else floor(number * factor) / factor
